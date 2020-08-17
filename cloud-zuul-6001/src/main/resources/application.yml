@@ -1,0 +1,27 @@
+server:
+  port: 6001
+spring:
+  application:
+    name: cloud-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+# 配置zuul
+zuul:
+  # 配置请求的前缀,一般情况下使用版本号表示
+  prefix: /v3
+  # 配置路由表,配置每一个需要转发的微服务
+  # 此处可以配置无数个
+  routes:
+    # 配置user的相关服务
+    # 一个微服务对应一个配置
+    users:
+      # 配置当前访问的服务的url地址
+      # 由开发者自定义,在路由中进行的过滤配置
+      path: /userService/**
+      # 指定服务的提供者是谁
+      # 是注册到Eureka中的微服务名
+      serviceId: cloud-eureka-provider
+#    staffs:
+#    products:

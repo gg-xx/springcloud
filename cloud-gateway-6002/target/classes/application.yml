@@ -1,0 +1,32 @@
+server:
+  port: 6002
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    nacos:
+      config:
+        # 是否开启配置中心，默认true
+        enabled: true
+        server-addr: 127.0.0.1:8848
+      discovery:
+        enabled: true
+    gateway:
+      # 配置路由,可以配置无数个路由,每一个routes对应一个路由
+      routes:
+        # 路由id,可以随便写,不能重复,具有唯一性,一般配合服务的名字
+        - id: users_route
+          # 提供服务的地址
+#          uri: http://localhost:9006
+          uri: lb://cloud-nacos-provider
+          predicates:
+            - Path=/users/**
+
+
+
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8848/nacos
+

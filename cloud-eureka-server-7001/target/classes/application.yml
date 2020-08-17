@@ -1,0 +1,13 @@
+server:
+  port: 7001
+eureka:
+  client:
+    # 是否将自己注册到Eureka服务中,默认为true
+    # 由于当前工程本身就是注册中心,因此必须设置为false
+    register-with-eureka: false
+    # 是否从Eureka服务中获取到对应的服务提供者的注册信息,默认为true
+    # 由于当前工程本身就是注册中心,因此必须设置为false
+    fetch-registry: false
+    service-url:
+      # 设置服务的地址
+      defaultZone: http://localhost:${server.port}/eureka/

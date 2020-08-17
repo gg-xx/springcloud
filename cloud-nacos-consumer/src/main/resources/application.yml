@@ -1,0 +1,14 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: cloud-sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+    sentinel:
+      transport:
+        # 配置sentinel控制台dashboard
+        dashboard: http://localhost:8080
